@@ -1,0 +1,32 @@
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <title>All File</title>
+</head>
+<body>
+
+<% if (fila.length) { %>
+<ul>
+    <% fila.forEach(function(fname){ %>
+    <li><a href="views/uploads/<%= fname %>"><%= fname %></a></li>
+    <% });;; %>
+</ul>
+<% } %>
+
+<a href="/"> Back </a>
+
+</body>
+
+<script>
+    //
+    //  angular.module('myapp', []);
+
+    //module.controller("first",function($scope){
+
+    //});
+
+</script>
+
+</html>

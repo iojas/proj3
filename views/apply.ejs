@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<!---->
    <div class="container">
       <div class="masthead">
         <h3 class="text-muted"></h3>
@@ -29,33 +30,42 @@
 <br>
 
 <div class="container">
-  <form>
+  <form id="uploadForm" enctype="multipart/form-data" method="post">
+
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Name</label>
+      <label for="name" class="col-sm-2 col-form-label">Name</label>
       <div class="col-sm-10">
-        <input class="form-control" placeholder="Please enter your First Name">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Last Name</label>
-      <div class="col-sm-10">
-        <input class="form-control" placeholder="Please Enter Last Name:">
+        <input class="form-control" placeholder="Please enter your First Name" id="name" name="name">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="example-tel-input" class="col-sm-2 col-form-label">Telephone</label>
+      <label for="lname" class="col-sm-2 col-form-label">Last Name</label>
+      <div class="col-sm-10">
+        <input class="form-control" placeholder="Please Enter Last Name:" id="lname" name="lname">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="tel" class="col-sm-2 col-form-label">Telephone</label>
       <div class="col-xs-10">
-        <input class="form-control" type="tel" PlaceHolder="10 digit phone number" id="example-tel-input">
+        <input class="form-control" type="tel" PlaceHolder="10 digit phone number" id="tel" name="tel">
       </div>
     </div>
 
     <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+          <label for="email" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
           </div>
     </div>
+
+      <div class="form-group row">
+          <label for="addr" class="col-sm-2 col-form-label">Address:</label>
+          <div class="col-sm-10">
+              <textarea class="form-control" id="addr" rows="3" placeholder="Please enter complete Address" name="addr" ></textarea>
+          </div>
+      </div>
 
     <fieldset class="form-group row">
       <label class="col-sm-2 col-form-label">Catagory</label>
@@ -91,6 +101,51 @@
       </div>
     </fieldset>
 
+      <div class="form-group row">
+          <label for="comment" class="col-sm-2 col-form-label">Comments:</label>
+          <div class="col-sm-10">
+              <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Please enter more information about catagory"></textarea>
+          </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="info" class="col-sm-2 col-form-label">Upload Information about you.</label>
+          <div class="col-sm-10">
+
+              <label class="custom-file">
+                  <input id="info" type="file" name="userphoto3" class="custom-file-input">
+                  <span class="custom-file-control"></span>
+              </label>
+
+          </div>
+      </div>
+
+
+      <div class="form-group row">
+          <label for="proof" class="col-sm-2 col-form-label">Upload Document of Proof</label>
+          <div class="col-sm-10">
+
+              <label class="custom-file">
+                  <input type="file" name="userPhoto2" id="proof" /><br>
+                  <span class="custom-file-control"></span>
+              </label>
+
+          </div>
+      </div>
+
+
+      <div class="form-group row">
+          <label for="passport" class="col-sm-2 col-form-label">Upload Passport Size Photo</label>
+          <div class="col-sm-10">
+
+              <label class="custom-file">
+                  <input type="file" name="userPhoto3" id="passport"  /><br>
+                  <span class="custom-file-control"></span>
+              </label>
+
+          </div>
+      </div>
+
 
 
     <div class="form-group row">
@@ -103,5 +158,12 @@
 
 
    </div>
+
+   <a href="allFiles"> List All the files in Directory </a>
+
+
+
+<a href="allFiles"> List All the files in Directory </a>
+
  </body>
     </html>
