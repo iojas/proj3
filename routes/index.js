@@ -1,19 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
+var mysql = require('mysql');
 
-var storage= multer.diskStorage({
-    destination: function (req,file,cb) {
-        cb(null,'views/uploads/');
-    },
-
-    filename: function (req,file,cb) {
-        console.log(req);
-        cb(null,Date.now()+file.originalname);
-    }
-});
-
-var upload = multer({storage: storage});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -73,21 +62,47 @@ router.get('/views/uploads/:file(*)', function(req, res, next){
     res.download(path);
 });
 
+var storage= multer.diskStorage({
+    destination: function (req,file,cb) {
+        cb(null,'views/uploads/');
+    },
 
+    filename: function (req,file,cb) {
+        //console.log("ooooooooooo");
+        console.log(req.body.name);
+
+        cb(null,Date.now()+req.body.name+req.body.lname+file.originalname);
+    }
+});
+
+var upload = multer({storage: storage});
 router.post('/apply',upload.any(),function(req, res, next) {
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    console.log(req.body.name);
-    console.log(req.body.lname);
-    console.log(req.body.tel);
-    console.log(req.body.email);
-    console.log(req.body.addr);
-    console.log(req.body.comment);
-    console.log(req.body.gridRadios);
+    var connection = mysql.createConnection({
+        host: 'malisamaj1.crwqdxb9dkgh.us-west-2.rds.amazonaws.com',
+        user: 'malisamaj',
+        password: 'malisamaj',
+        database: 'ojas'
+    })
 
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    //res.render(res);
+    connection.connect(function(err) {
+        if (err) throw err
+        console.log('You are now connected...');
+        if(req.body.name=="" || req.body.lname=="" || req.body.tel=="" || req.body.addr=="" || req.body.gridRadios=="" || req.body.comment==""){
+            console.log("Invalid Data");
+        }else{
+            connection.query('insert into applicant (name, lname, telephone, email, address, catagory, comments) values (?,?,?,?,?,?,?)',
+                [req.body.name,req.body.lname,req.body.tel,req.body.email,req.body.addr,req.body.gridRadios,req.body.comment],
+                function(err, result) {
+                    if (err) throw err
+                    console.log("added data successfully");
+                })
+        }
+
+
+
+    })
+
     res.render('apply');
-
     res.send(req.files);
 
 
