@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var mysql = require('mysql');
+var https = require('https');
+var Client = require('node-rest-client').Client;
+var client = new Client();
 
 
 /* GET home page. */
@@ -25,7 +28,34 @@ router.get('/About', function(req, res, next) {
   res.render('About', { title: 'Express' });
 });
 
+router.get('/managerHome', function(req, res, next) {
+    res.render('managerHome');
+});
 
+router.get('/dashBoard', function(req, res, next) {
+    res.render('dashboard');
+});
+
+router.get('/AllAplicants', function(req, res, next) {
+
+    client.get("http://polar-oasis-16169.herokuapp.com/applicants", function (data, response) {
+        // parsed response body as js object
+        console.log(data);
+        // raw response
+        //console.log(response);
+        res.render("Allaplicants",{ojas:data});
+    });
+
+});
+
+
+router.get('/plainList', function(req, res, next) {
+     client.get("http://polar-oasis-16169.herokuapp.com/applicants", function (data, response) {
+        console.log(data);
+        res.render("plainList",{ojas:data});
+    });
+
+});
 
 
 //for listing all files.
@@ -95,6 +125,7 @@ router.post('/apply',upload.any(),function(req, res, next) {
                 function(err, result) {
                     if (err) throw err
                     console.log("added data successfully");
+
                 })
         }
 

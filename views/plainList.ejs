@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Single page web app using Angularjs</title>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+
+</head>
+<body>
+<!--
+   <div class="container">
+
+     The justified navigation menu is meant for single line per list item.
+          Multiple lines will require custom code not provided by Bootstrap.
+      <div class="masthead">
+        <h3 class="text-muted"></h3>
+        <nav>
+          <ul class="nav nav-pills">
+            <li><a href="index">Home</a></li>
+            <li class="active"><a href="#">माळी समाज</a></li>
+            <li><a href="#">माहिती</a></li>
+            <li><a href="#">मागील कार्यक्रम</a></li>
+            <li><a href="#">संपर्क</a></li>
+            <li><a href="apply">Apply!</a></li>
+          </ul>
+        </nav>
+      </div>
+-->
+      <br><br>
+      <div class="container-fluid">
+        <div class="row">
+
+              <% if (ojas.length) { %>
+              <table class="table table-hover">
+
+               <thead>
+                  <tr>
+                    <th>Applicant Name</th>
+                    <th>Applying for</th>
+                  </tr>
+               </thead>
+
+                <% ojas.forEach(function(app){ %>
+
+
+                      <tbody>
+                      <tr>
+                        <td>
+                          <%=app.name%> <%=app.lname%>
+                        </td>
+
+                        <td>
+                          <%=app.catagory%> <%=app.comments%>
+                        </td>
+                      </tr>
+
+
+                  <% });;; %>
+
+              <% } %>
+                      </tbody>
+              </table>
+
+        </div>
+
+      <!-- Site footer -->
+      <footer class="footer" style="background-color:black color:white">
+        <p><h6>© 2016 Company, Inc.</h6></p>
+      </footer>
+
+      </div> <!-- /container -->
+
+
+
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+</body>
+</html>
