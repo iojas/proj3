@@ -38,7 +38,7 @@ router.get('/dashBoard', function(req, res, next) {
 
 router.get('/AllAplicants', function(req, res, next) {
 
-    client.get("http://polar-oasis-16169.herokuapp.com/applicants", function (data, response) {
+    client.get("https://peaceful-caverns-29713.herokuapp.com/applicants/accepted", function (data, response) {
         // parsed response body as js object
         console.log(data);
         // raw response
@@ -50,9 +50,33 @@ router.get('/AllAplicants', function(req, res, next) {
 
 
 router.get('/plainList', function(req, res, next) {
-     client.get("http://polar-oasis-16169.herokuapp.com/applicants", function (data, response) {
+     client.get("https://peaceful-caverns-29713.herokuapp.com/applicants", function (data, response) {
         console.log(data);
         res.render("plainList",{ojas:data});
+    });
+
+});
+
+router.get('/accepted', function(req, res, next) {
+    client.get("https://peaceful-caverns-29713.herokuapp.com/applicants/accepted", function (data, response) {
+        console.log(data);
+        res.render("accepted",{ojas:data});
+    });
+
+});
+
+router.get('/rejected', function(req, res, next) {
+    client.get("https://peaceful-caverns-29713.herokuapp.com/applicants/rejected", function (data, response) {
+        console.log(data);
+        res.render("rejected",{ojas:data});
+    });
+
+});
+
+router.get('/new', function(req, res, next) {
+    client.get("https://peaceful-caverns-29713.herokuapp.com/applicants/new", function (data, response) {
+        console.log(data);
+        res.render("new",{ojas:data});
     });
 
 });
@@ -119,7 +143,9 @@ router.post('/apply',upload.any(),function(req, res, next) {
         console.log('You are now connected...');
         if(req.body.name=="" || req.body.lname=="" || req.body.tel=="" || req.body.addr=="" || req.body.gridRadios=="" || req.body.comment==""){
             console.log("Invalid Data");
+            console.log(req.body.gender);
         }else{
+
             connection.query('insert into applicant (name, lname, telephone, email, address, catagory, comments) values (?,?,?,?,?,?,?)',
                 [req.body.name,req.body.lname,req.body.tel,req.body.email,req.body.addr,req.body.gridRadios,req.body.comment],
                 function(err, result) {

@@ -27,6 +27,17 @@
             $("#loadHere").load("allFiles");
         });
 
+        $("#accepted").click(function(){
+            $("#loadHere").load("accepted");
+        });
+
+        $("#rejected").click(function(){
+            $("#loadHere").load("rejected");
+        });
+
+        $("#new").click(function(){
+            $("#loadHere").load("new");
+        });
 
     });
 
@@ -72,7 +83,10 @@
                         <li role="presentation" id="dashboard"><a href="#">DashBoard</a></li>
                         <li role="presentation" id="allapp"><a href="#">All Applicants</a></li>
                         <li role="presentation" id="allList"><a href="#">Applicants List</a></li>
-                    <li role="presentation" id="fileList"><a href="#">Applicants Files</a></li>
+                        <li role="presentation" id="new"><a href="#">New applicants</a></li>
+                        <li role="presentation" id="accepted"><a href="#">Accepted Applicants</a></li>
+                        <li role="presentation" id="rejected"><a href="#">Rejected Applicants</a></li>
+                        <li role="presentation" id="fileList"><a href="#">Applicants Files</a></li>
                         <li role="presentation"><a href="#">Show</a></li>
                 </ul>
             </div>
